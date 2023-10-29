@@ -1,0 +1,16 @@
+div{
+    font-family: 'Russo One', sans-serif;
+    font-size: 50px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    padding-top: 500px;
+    justify-content: space-evenly;
+}
+
+.background{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
