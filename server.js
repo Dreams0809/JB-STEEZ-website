@@ -31,7 +31,7 @@ app.use(
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
-        store: MongoStore.create({  mongoUrl: 'mongodb+srv://expensivepain:UWrR2GigHepkhS2p@cluster0.wabvaiw.mongodb.net/JBwebsite?retryWrites=true&w=majority' })
+        store: MongoStore.create({  mongoUrl:  })
             // mongooseConnection: mongoose.connection})
     })
 )
