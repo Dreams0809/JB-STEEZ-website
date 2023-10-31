@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')
 const methodOverride = require("method-override")
 const flash = require('express-flash')
 const logger = require('morgan')
@@ -31,19 +31,20 @@ app.use(
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({mongooseConnection: mongoose.connection})
+        store: MongoStore.create({  mongoUrl: 'mongodb+srv://expensivepain:UWrR2GigHepkhS2p@cluster0.wabvaiw.mongodb.net/JBwebsite?retryWrites=true&w=majority' })
+            // mongooseConnection: mongoose.connection})
     })
 )
 
 //Passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
-app.use(flash())
-app.use(methodOverride("_method")); 
+// app.use(flash())
+// app.use(methodOverride("_method")); 
 
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 
 app.use(flash())
