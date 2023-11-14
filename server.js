@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo').default 
 const methodOverride = require("method-override")
 const flash = require('express-flash')
 const logger = require('morgan')
@@ -31,8 +31,7 @@ app.use(
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
-        store: MongoStore.create({  mongoUrl:  })
-            // mongooseConnection: mongoose.connection})
+        store: new MongoStore.create({  mongoUrl: process.env.DB_STRING})
     })
 )
 
@@ -48,6 +47,7 @@ app.use(
 
 
 app.use(flash())
+app.use(methodOverride("_method")); 
 
 // Routes
 app.use('/home', homeRoutes)
