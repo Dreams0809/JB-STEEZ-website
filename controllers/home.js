@@ -3,7 +3,7 @@ const { response, request } = require("express")
 module.exports = {
    
     getHome: (request,response)=>{
-        response.render('index.html')
+        response.render('index.ejs')
     }
 }
 

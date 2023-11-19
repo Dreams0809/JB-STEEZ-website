@@ -2,14 +2,14 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const session = require('express-session')
-const MongoStore = require('connect-mongo').default 
+const MongoStore = require('connect-mongo')
 const methodOverride = require("method-override")
 const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 const cors = require('cors')
-require('dotenv').config({path: './config/.env'})
+require('dotenv').config({path:'./config/.env'})
 
 // Connect to DB
 connectDB()
@@ -31,7 +31,7 @@ app.use(
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({mongooseConnection: mongoose.connection})
+        store: MongoStore.create({mongoUrl: process.env.DB_STRING })
     })
 )
 
@@ -39,8 +39,8 @@ app.use(
 // app.use(passport.initialize())
 // app.use(passport.session())
 
-// app.use(flash())
-// app.use(methodOverride("_method")); 
+app.use(flash())
+app.use(methodOverride("_method")); 
 
 // app.use(passport.initialize())
 // app.use(passport.session())
@@ -50,7 +50,7 @@ app.use(flash())
 app.use(methodOverride("_method")); 
 
 // Routes
-app.use('/home', homeRoutes)
+app.use('/', homeRoutes)
 
 
 app.listen(process.env.PORT, ()=>{
