@@ -1,6 +1,17 @@
 //custom variables
-$primary: #100c08;
+$primary: #fefe33;
 $secondary: #fefe33; 
 
+@import "../node_modules/bootstrap/scss/_functions.scss";
+@import "../node_modules/bootstrap/scss/_variables.scss";
+
+$custom-theme-colors: (
+    "altprimary": #fefe33,
+    "altsecondary": #100c08,
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
 //import boostrap
-@import'node_modules/bootstrap/scss/bootstrap';
+@import "../node_modules/bootstrap/scss/bootstrap.scss"; 
+
