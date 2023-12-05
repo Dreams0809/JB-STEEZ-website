@@ -6,7 +6,7 @@ module.exports = {
         response.render('index.ejs')
     },
 
-    getShop: (request, reponse)=>{
+    getShop: (request, response)=>{
         response.render('shop.ejs')
     }
 }
